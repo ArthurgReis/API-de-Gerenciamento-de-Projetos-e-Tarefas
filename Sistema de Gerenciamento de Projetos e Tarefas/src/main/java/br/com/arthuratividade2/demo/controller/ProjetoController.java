@@ -59,4 +59,10 @@ public class ProjetoController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/nome/{nomeDoProjeto}")
+    public ResponseEntity<Projeto> buscarProjetoPorNome(@PathVariable String nomeDoProjeto){
+        Projeto projeto = projetoService.buscarPorNome(nomeDoProjeto);
+        return ResponseEntity.ok(projeto);
+    }
+
 }

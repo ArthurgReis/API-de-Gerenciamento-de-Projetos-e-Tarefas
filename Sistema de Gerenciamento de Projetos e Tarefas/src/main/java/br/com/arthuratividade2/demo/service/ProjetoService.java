@@ -46,6 +46,12 @@ public class ProjetoService {
         projetoRepository.delete(projeto);
     }
 
+    public Projeto buscarPorNome(String nome){
+        return projetoRepository.findByNome(nome)
+            .orElseThrow(()-> new RuntimeException("Projeto não encontrado!"));
+
+    }
+
 
 
 }

@@ -89,5 +89,17 @@ public class TarefaService {
         tarefa.setStatus(novoStatus);
         return tarefaRepository.save(tarefa);
     }
+    public Tarefa buscarTarefaPorNome(Long idProjeto,String descricao){
+        Projeto projeto = projetoRepository.findById(idProjeto)
+            .orElseThrow(() -> new RuntimeException("Projeto não encontrado!"));
+
+        Tarefa tarefa = projeto.getTarefas().stream()
+            .filter(t ->t.getDescricao().equals(descricao))
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException("Tarefa não encontrada!"));
+
+        return tarefa;
+
+    }
 
 }

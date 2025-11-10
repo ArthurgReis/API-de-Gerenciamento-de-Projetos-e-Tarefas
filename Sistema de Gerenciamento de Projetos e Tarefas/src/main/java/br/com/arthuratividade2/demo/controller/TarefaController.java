@@ -88,6 +88,13 @@ public class TarefaController {
         Tarefa tarefa = tarefaService.atualizarStatus(idProjeto, idTarefa, StatusTarefa.PENDENTE);
         return ResponseEntity.ok(tarefa);
     }
+
+    @GetMapping("/descricao/{descricao}")
+    public ResponseEntity<Tarefa> buscarTarefaPorDescricao(@PathVariable Long idProjeto, @PathVariable String descricao){
+        Tarefa tarefa = tarefaService.buscarTarefaPorNome(idProjeto, descricao);
+
+        return ResponseEntity.ok(tarefa);
+    }
     
 }
 
